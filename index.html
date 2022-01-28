@@ -11,25 +11,29 @@
 </head>
 
 <body>
-    <div id="main">
-        
-        <div class="intro">
+<div id="main">
+    <div class="hide-html"> 
+      <div class="intro">
+      
             <h1>PICKATRUE</h1>
-          <div class="button-space">
-            <button>StartGame</button>
+          <div id="button-space">
+            <button id="start-button">StartGame</button>
             <p>The main objective is to find the other pair of pokemon, in the shortest time possible and each wrong attempt, 
                 your score decreases and with each second that passes too,so ... PICK A TRUE!!
             </p>
-            <button >Acessible Game</button>
+            <button class="accessible-game" >Acessible Game</button>
             <p>
                 If you want to test your sonic skills,
                  try Accessible Mode, and find matches by sound alone.
             </p>
         </div>
             <div id="score"></div>
-
             <div id="game"></div>
         </div>
+    </div>
+</div>
+    <div id="game-board">
+        <canvas id="canvas" width="600" height="600"></canvas>
     </div>
 </body>
 <p></p>
