@@ -152,50 +152,55 @@ const cards = [
     { name:'zubat-f' , img:'/images/zubat-f.png'} */
        
 ];
+let tiles = [];
+let flippedTiles = [];
 
-const memoryGame = new MemoryGame(cards);
+
 class MemoryGame {
-    constructor(game,card){
-        this.card = card
-        this.chooseCards = [];
-        this.pairsClicked = 0;
-        this.pairsGuessed = 0;
-        this.mixCards();
+    constructor(someCards) {
+      this.cards = someCards;
+      this.pickedCards = [];
+      this.pairsGuessed = 0;
+      this.pairsClicked = 0;
+      this.shuffleCards();
     }
-    mixCards(){
+    shuffleCards() {
+      let allCards = this.cards.length;
+      while (allCards > 0) {
+        allCards--;
+        let choice1 = this.cards[allCards];
+        let randomCards = Math.floor(Math.random() * allCards);
+        this.cards[allCards] = this.cards[randomCards];
+        this.cards[randomCards] = choice1;
+      }
+    }
 
-    }
-    checkPair(card1,card2){
-        
-        if(card1 === card2){
-            this.pairsClicked++;
-            this.pairsGuessed++ ;
-            this.quantityPairFound();
-            return true;
+    checkIfPair(card1, card2) {
+        this.pairsClicked++;
+        if (card1 === card2) {
+          this.pairsGuessed++;
+          this.isFinished();
+          return true;
         }
-        else{
-            this.pairsClicked++;
-            return false
-        }
+        return false;
+      }
+     
+      isFinished() {
+        if (this.pairsGuessed === 2) {
+         let first = pairsGuessed[0];
+         let second = pairsGuessed[1];
 
-    }
-    quantityPairFound(){
-       
-
-    }
-}
-
-let hasFlippedCard = false;
-let firstCard ,secondCard;
-
-function flipCards(){
-if(!hasFlippedCard){
-    hasFlippedCard = true;
-    firstCard = this ;
-}
-else{
-    hasFlippedCard = false;
-    secondCard = this;
+         if (tiles[first].card1 === tiles[second].card2) {
+            flippedTiles = [];
+            clickedTile = 0;
+          }
+          if (tiles[first].card1 !== tiles[second].card2) {
+            setTimeout(function() {
+              tiles[first].revealed = false;
+              tiles[second].revealed = false;
+              clickedTile = 0;
+            }, 1500);
+      }
 }
 }
-cards.forEach(card => card.addEventListener('click',flipCards));
+}
