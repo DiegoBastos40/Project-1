@@ -1,11 +1,15 @@
 /*.hide-html{
    display: none;
 }*/
+@import url('http://fonts.cdnfonts.com/css/pok');
+@import url('http://fonts.cdnfonts.com/css/the-jack-marron');
+
+
 body .intro {
     background-image: url('/images/pokemon-unite-pokemon-hd-wallpaper-1920x1080-uhdpaper.com-830.1_a.jpg');
     background-size: cover;
     width:100%;
-    height:580px;
+    height:645px;
     margin: 0;
     padding: 0;
 }
@@ -22,10 +26,11 @@ body .intro {
 }
 .intro p {
     width: 40%;
-    color: white;
+    color: rgba(12, 7, 8, 0.9);
    margin-left: auto;
    margin-right: auto;
    font-size: 25px;
+   font-family: 'THE JACK MARRON', sans-serif;
 }
 
 h1{
@@ -36,8 +41,10 @@ h1{
 	 text-align: center;
      align-items: center;
     font-size: 56px;
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #ffcc03;
+    font-family: 'Pokemon Solid';
+    color: #067768;
+    letter-spacing: 16px;
+   
     
    
 }
@@ -46,6 +53,33 @@ h1{
     padding: 0px ;
     margin: 0px;
 }
-img{
-    width: 100px;
+
+#start-button{
+    
+  background-color: #067768;
+  border: 1px solid #9C531F;
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #0c3832;
+  width: 250px;
+}
+.accessible-game {
+  width: 250px;
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #067768;;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #0c3832;
+
 }
