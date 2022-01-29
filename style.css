@@ -1,5 +1,5 @@
 .hide-html{
-   /*display: none;*/ 
+   display: none;
 }
 body .intro {
     background-image: url('/images/pokemon-unite-pokemon-hd-wallpaper-1920x1080-uhdpaper.com-830.1_a.jpg');
@@ -45,4 +45,7 @@ h1{
     float: left;
     padding: 0px ;
     margin: 0px;
+}
+img{
+    width: 100px;
 }

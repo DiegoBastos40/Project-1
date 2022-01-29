@@ -9,9 +9,21 @@ const cards = [
     { name:'clefairy' , img:'/images/clefairy.png'},
     { name:'cloyster' , img:'/images/cloyster.png'},
     { name:'cubone' , img:'/images/cubone.png'},
-    { name:'dewgong' , img:'/images/dewgong.png'},
+     { name:'dewgong' , img:'/images/dewgong.png'},
     { name:'diglett' , img:'/images/diglett.png'},
-    { name:'ditto' , img:'/images/ditto.png'},
+    { name:'bulbasur' , img:'/images/bulbasaur.png'},
+    { name:'butterfree' , img:'/images/butterfree.png'},
+    { name:'caterpie' , img:'/images/caterpie.png'},
+    { name:'chansey' , img:'/images/chansey.png'},
+    { name:'charizard' , img:'/images/charizard.png'},
+    { name:'charmander' , img:'/images/charmander.png'},
+    { name:'charmeleon' , img:'/images/charmeleon.png'},
+    { name:'clefairy' , img:'/images/clefairy.png'},
+    { name:'cloyster' , img:'/images/cloyster.png'},
+    { name:'cubone' , img:'/images/cubone.png'},
+     { name:'dewgong' , img:'/images/dewgong.png'},
+    { name:'diglett' , img:'/images/diglett.png'}
+    /*{ name:'ditto' , img:'/images/ditto.png'},
     { name:'dodrio-f' , img:'/images/dodrio-f.png'},
     { name:'doduo-f' , img:'/images/doduo-f.png'},
     { name:'doduo' , img:'/images/doduo.png'},
@@ -137,6 +149,53 @@ const cards = [
     { name:'weezing' , img:'/images/weezing.png'},
     { name:'wigglytuff' , img:'/images/wigglytuff.png'},
     { name:'zapdos' , img:'/images/zapdos.png'},
-    { name:'zubat-f' , img:'/images/zubat-f.png'}
+    { name:'zubat-f' , img:'/images/zubat-f.png'} */
        
 ];
+
+const memoryGame = new MemoryGame(cards);
+class MemoryGame {
+    constructor(game,card){
+        this.card = card
+        this.chooseCards = [];
+        this.pairsClicked = 0;
+        this.pairsGuessed = 0;
+        this.mixCards();
+    }
+    mixCards(){
+
+    }
+    checkPair(card1,card2){
+        
+        if(card1 === card2){
+            this.pairsClicked++;
+            this.pairsGuessed++ ;
+            this.quantityPairFound();
+            return true;
+        }
+        else{
+            this.pairsClicked++;
+            return false
+        }
+
+    }
+    quantityPairFound(){
+       
+
+    }
+}
+
+let hasFlippedCard = false;
+let firstCard ,secondCard;
+
+function flipCards(){
+if(!hasFlippedCard){
+    hasFlippedCard = true;
+    firstCard = this ;
+}
+else{
+    hasFlippedCard = false;
+    secondCard = this;
+}
+}
+cards.forEach(card => card.addEventListener('click',flipCards));

@@ -1,14 +1,9 @@
 window.onload = () => {
-    document.getElementById('start-button').onclick = () => {
-      startGame(); 
+  {   startGame();
     };
-    document.getElementById('accessible-game').onclick = () => {
-        startAcessGame(); 
-      };
+  
     function startGame() {
-     }
-    
-    function startAcessGame() {
-
+      const game = new Game();
+      game.start();
     }
   };

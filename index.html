@@ -11,30 +11,38 @@
 </head>
 
 <body>
-<div id="main">
-    <div class="hide-html"> 
-      <div class="intro">
-      
-            <h1>PICKATRUE</h1>
-          <div id="button-space">
-            <button id="start-button">StartGame</button>
-            <p>The main objective is to find the other pair of pokemon, in the shortest time possible and each wrong attempt, 
-                your score decreases and with each second that passes too,so ... PICK A TRUE!!
-            </p>
-            <button class="accessible-game" >Acessible Game</button>
-            <p>
-                If you want to test your sonic skills,
-                 try Accessible Mode, and find matches by sound alone.
-            </p>
+    <div id="main">
+        <div class="hide-html">
+            <div class="intro">
+
+                <h1>PICKATRUE</h1>
+                <div id="button-space">
+                    <button id="start-button">StartGame</button>
+                    <p>The main objective is to find the other pair of pokemon, in the shortest time possible and each
+                        wrong attempt,
+                        your score decreases and with each second that passes too,so ... PICK A TRUE!!
+                    </p>
+                    <button class="accessible-game">Acessible Game</button>
+                    <p>
+                        If you want to test your sonic skills,
+                        try Accessible Mode, and find matches by sound alone.
+                    </p>
+
+                </div>
+            </div>
+
         </div>
-            <div id="score"></div>
-            <div id="game"></div>
+        <div id="game-board">
+            <canvas id="canvas" width="600" height="600"></canvas>
         </div>
+        <div id="score"></div>
+        <div id="game"></div>
+
     </div>
-</div>
-    <div id="game-board">
-        <canvas id="canvas" width="600" height="600"></canvas>
-    </div>
+    <script type="text/javascript" src="/memory.js"></script>
+    <script type="text/javascript" src="/cards.js"></script>
+    <script type="text/javascript" src="/game.js"></script>
+    <script type="text/javascript" src="/index.js"></script>
 </body>
 <p></p>
 
