@@ -1,5 +1,5 @@
 /*.hide-html{
-   display: none;
+   display: block;
 }*/
 @import url('http://fonts.cdnfonts.com/css/pok');
 @import url('http://fonts.cdnfonts.com/css/the-jack-marron');
@@ -54,7 +54,7 @@ h1{
     margin: 0px;
 }
 
-#start-button{
+button{
     
   background-color: #067768;
   border: 1px solid #9C531F;

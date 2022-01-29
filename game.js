@@ -31,6 +31,8 @@ class Game {
     update(){
     this.drawBackground();
     this.drawCardsImage();
+   
+    
     }
     drawBackground(){
       this.background.src = '/unnamed.png';
@@ -117,6 +119,10 @@ class Game {
       }*/
     }
    
+hideButton(){
+  document.getElementsByClassName("hide-html")[0].style.display = "none"
+}
 
+      
         
   }
