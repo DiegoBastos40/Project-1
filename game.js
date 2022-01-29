@@ -11,10 +11,10 @@ class Game {
       this.cardsImage6= new Image(); 
       this.cardsImage7= new Image(); 
       this.cardsImage8= new Image();
-       this.cardsImage9= new Image();
-        this.cardsImage10= new Image(); 
-        this.cardsImage11= new Image();
-         this.cardsImage12= new Image();
+      this.cardsImage9= new Image();
+      this.cardsImage10= new Image(); 
+      this.cardsImage11= new Image();
+      this.cardsImage12= new Image();
       this.frames = 0;
       this.x = 0;
       this.y = 0;
