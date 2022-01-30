@@ -1,6 +1,6 @@
-/*.hide-html{
-   display: block;
-}*/
+#game-board{
+   display: none;
+}
 @import url('http://fonts.cdnfonts.com/css/pok');
 @import url('http://fonts.cdnfonts.com/css/the-jack-marron');
 

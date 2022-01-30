@@ -18,7 +18,7 @@ class Game {
       this.frames = 0;
       this.x = 0;
       this.y = 0;
-      this.canvasWidth = 600;
+      this.canvasWidth = 800;
       this.canvasHeight = 600;
       this.intervalId = null;
       this.revealed = false;
@@ -27,11 +27,17 @@ class Game {
       this.intervalId = setInterval(() => {
         this.update();
       }, 1500);
+
+      canvas.addEventListener('click', drawBackground(), false);
+      
+      canvas.addEventListener('click', drawCardsImage(), false);
+
     }
     update(){
     this.drawBackground();
     this.drawCardsImage();
     this.hideButton();
+
     
     }
     drawBackground(){
@@ -121,9 +127,11 @@ class Game {
    
 hideButton(){
   let btn = document.getElementById('start-button');
-let container = document.querySelector('.hide-html');
+  let container = document.querySelector('.hide-html');
+  let showCanvas = document.querySelector('#game-board');
   btn.addEventListener('click', function() {
-  container.style.display = 'none'  
+  container.style.display = 'none'  ;
+  showCanvas.style.display = 'block';
   },false);
 }
 }
