@@ -28,10 +28,7 @@ class Game {
         this.update();
       }, 1500);
 
-      canvas.addEventListener('click', drawBackground(), false);
-      
-      canvas.addEventListener('click', drawCardsImage(), false);
-
+     
     }
     update(){
     this.drawBackground();
