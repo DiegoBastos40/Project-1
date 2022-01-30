@@ -31,7 +31,7 @@ class Game {
     update(){
     this.drawBackground();
     this.drawCardsImage();
-   
+    this.hideButton();
     
     }
     drawBackground(){
@@ -120,9 +120,10 @@ class Game {
     }
    
 hideButton(){
-  document.getElementsByClassName("hide-html")[0].style.display = "none"
+  let btn = document.getElementById('start-button');
+let container = document.querySelector('.hide-html');
+  btn.addEventListener('click', function() {
+  container.style.display = 'none'  
+  },false);
 }
-
-      
-        
-  }
+}
