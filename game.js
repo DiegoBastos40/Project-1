@@ -29,7 +29,7 @@ export default class Game {
     };
   }
   render() {
-    //this.drawBackground();
+   // this.drawBackground();
     //this.drawCardsImage();
   }
 
