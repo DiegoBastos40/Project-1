@@ -1,10 +1,25 @@
+import Cards from './cards.js';
+import { shuffleArray } from './helpers.js';
+
 export default class Game {
   constructor() {
     this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
   }
   start() {
+    this.sortCards();
     this.render();
+  }
+  sortCards(limit = 5) {
+    let cards = [];
+    while (cards.length < limit) {
+      const random = Math.floor(Math.random() * Cards.length);
+      if (!cards.includes(random)) {
+        cards.push(random);
+      }
+    }
+    cards = shuffleArray(cards.concat(cards));
+    return cards;
   }
   drawBackground() {
     const background = new Image();
