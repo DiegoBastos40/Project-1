@@ -1,4 +1,4 @@
-const cards = [
+/* const cards = [
     { name:'bulbasur' , img:'/images/bulbasaur.png'},
     { name:'butterfree' , img:'/images/butterfree.png'},
     { name:'caterpie' , img:'/images/caterpie.png'},
@@ -79,9 +79,8 @@ function flipCard() {
 (function shuffle() {
   cards.forEach(card => {
     let randomPos = Math.floor(Math.random() * cards.length);
-    card.style.order = randomPos;
+   // card.style.order = randomPos;
   });
 })();
-
-  canvas.addEventListener('click', drawBackground(), false);
-  canvas.addEventListener('click', drawCardsImage(), false);
+ */
+  

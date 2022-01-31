@@ -1,4 +1,4 @@
-function KeyDown(e){
+/* function KeyDown(e){
     window.addEventListener('keydown', (e) => {
         switch (e.code) {
           case 'q':
@@ -6,3 +6,4 @@ function KeyDown(e){
         }
       });
     }
+ */
