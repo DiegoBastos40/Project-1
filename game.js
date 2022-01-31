@@ -1,35 +1,72 @@
 import Cards from './cards.js';
 import { shuffleArray } from './helpers.js';
 
+const backgroundElement = new Image();
+backgroundElement.src = './unnamed.png';
+
 export default class Game {
   constructor() {
     this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
+    this.selectedCards = [];
+    this.points = 0;
   }
   start() {
-    this.sortCards();
+    this.selectedCards = this.sortCards();
     this.render();
   }
   sortCards(limit = 5) {
     let cards = [];
     while (cards.length < limit) {
       const random = Math.floor(Math.random() * Cards.length);
-      if (!cards.includes(random)) {
-        cards.push(random);
+      if (!cards.includes(Cards[random])) {
+        const card = Object.assign({}, Cards[random]);
+        card.reveled = true;
+        cards.push(card);
       }
     }
     cards = shuffleArray(cards.concat(cards));
     return cards;
   }
   drawBackground() {
-    const background = new Image();
-    background.src = 'unnamed.png';
-    background.onload = () => {
-      this.ctx.drawImage(background, 0, 0, 800, 600);
-    };
+    this.ctx.drawImage(backgroundElement, 0, 0, 800, 600);
+  }
+  drawCards() {
+    const totalCards = this.selectedCards.length; // Total de cartas que vamos mostrar
+    const cardWidth = 100; // Valor do tamanhoX das cartas
+    const cardHeight = 130; // Valor do tamanhoY das cartas
+    const offSetPadding = 30; // Valor do padding das cartas
+
+    const startDrawingX =
+      this.canvas.offsetWidth / 2 -
+      (cardWidth * (totalCards / 2) + offSetPadding * (totalCards / 2 - 1)) / 2;
+    const startDrawingY =
+      this.canvas.offsetHeight / 2 - (cardHeight * 2 + offSetPadding) / 2;
+    console.log(startDrawingX, startDrawingY);
+
+    console.log(startDrawingX, startDrawingY);
+
+    this.ctx.fillStyle = '#FF0000';
+    let nextStartPointX = startDrawingX;
+    let nextStartPointY = startDrawingY;
+    this.selectedCards.forEach((card, index) => {
+      this.ctx.fillRect(
+        nextStartPointX,
+        nextStartPointY,
+        cardWidth,
+        cardHeight,
+      );
+
+      nextStartPointX = nextStartPointX + cardWidth + offSetPadding;
+      if (this.selectedCards.length / 2 === index + 1) {
+        nextStartPointY = nextStartPointY + cardHeight + offSetPadding;
+        nextStartPointX = startDrawingX;
+      }
+    });
   }
   render() {
     this.drawBackground();
+    this.drawCards();
   }
 
   // drawCardsImage() {
