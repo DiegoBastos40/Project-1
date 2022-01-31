@@ -30,7 +30,7 @@ class Rectangle {
      draw(context) {
         this.background.src = '/unnamed.png';
         this.background.onload = () => {
-       context.drawImage(this.background, 0, 0, 90, 140);
+        context.drawImage(this.background, 0, 0, 90, 140);
         context.drawImage(this.background, 100, 0, 90, 140);
         context.drawImage(this.background, 200, 0, 90, 140);
         context.drawImage(this.background, 300, 0, 90, 140);
@@ -62,7 +62,8 @@ class Rectangle {
 
 clickQuads(xmouse,ymouse){
 
-  if((xmouse > firtRect.xpoint && xmouse < firtRect.width ) && (ymouse > firtRect.ypoint && ymouse < firtRect.height)) {
+  if((xmouse > firtRect.xpoint && xmouse < firtRect.width ) &&
+   (ymouse > firtRect.ypoint && ymouse < firtRect.height)) {
     console.log('true')
     return true;
   }
