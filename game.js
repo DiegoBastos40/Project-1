@@ -66,6 +66,8 @@ export default class Game {
         this.wrongPair++;
         if(this.wrongPair >= 6){
           alert('Game Over');
+         
+         
         }
         console.log(this.wrongPair);
         console.log('errou');
@@ -91,7 +93,7 @@ export default class Game {
     });
     this.refresh();
   }
-  sortCards(limit = 10) {
+  sortCards(limit = 8) {
     let cards = [];
     while (cards.length < limit) {
       const random = Math.floor(Math.random() * Cards.length);

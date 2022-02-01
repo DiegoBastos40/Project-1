@@ -1,5 +1,5 @@
  const cardBackground = new Image();
-cardBackground.src = './unnamed.png';
+cardBackground.src = '/unnamed22.jpg';
 
 export default class Card {
   constructor(

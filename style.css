@@ -13,7 +13,12 @@ body .intro {
     margin: 0;
     padding: 0;
 }
-
+#canvas {
+    background-image: url(/11.jpg);
+  //  background-repeat: no-repeat;
+   // background-size: cover;
+    
+}
 .intro{
 
     display: flex;
