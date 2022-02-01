@@ -1,4 +1,4 @@
-//Canvas Settings
+/* //Canvas Settings
 
 let canvas= document.getElementById('canvas');
 let context = canvas.getContext('2d');
@@ -11,11 +11,11 @@ canvas.height = window_height;
 
 //canvas.style.background = '#bbf'
 //Thing About Do
-let imgSrcs = ['/cards.js']
+//let imgSrcs = ['/cards.js']
 
 /*for (let i = 0; i< cards.length ; i++){
   this.cards.push(new Card(x, y, width, height, imgSrcs[i]))
-} */
+} 
  
 
 class Rectangle {
@@ -84,3 +84,4 @@ canvas.addEventListener('click',(event)=>{
 
   console.log(x, y);
 });
+ */

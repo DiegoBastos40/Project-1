@@ -1,99 +1,137 @@
 import Cards from './cards.js';
+import Card from './card.js';
 import { shuffleArray } from './helpers.js';
 
 export default class Game {
   constructor() {
     this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
-    this.cards = [];
+    this.points = 0;
+    this.selectedCards = [];
+    this.cardsElement = [];
+    this.currentPlay= [];
+    this.correctPair = 0;
+
   }
   start() {
-    this.sortCards();
+    
+    this.selectedCards = this.sortCards();
     this.render();
+    setTimeout(() => this.hideAllCards(), 1500);
+    this.setEventListeners();
+  }
+  handleClickEvent(x, y) {
+    const card = this.cardsElement.find((card) => {
+    return card.clicked(x, y);
+    });
+    if (card) {
+      card.data.reveled = true;
+      card.update(card.data);
+      //this.currentPlay.push(card.data);
+      console.log(this.currentPlay);
+      
+      if(this.currentPlay.length === 1){
+        if(card.id !== this.currentPlay[0].id){
+          this.currentPlay.push(card.data);
+        }}
+        else if (this.currentPlay.length === 0){
+          this.currentPlay.push(card.data);
+          
+        }
+
+     if(this.currentPlay.length === 2){
+       
+        let firstClick =  this.currentPlay[0];
+        let secondClick = this.currentPlay[1];
+        if(firstClick.name === secondClick.name && secondClick.id !== firstClick.id){
+        
+          this.currentPlay.splice(0,2);
+          this.correctPair++;
+          console.log(this.correctPair);
+          console.log('acertou');
+         }
+         else {
+          setTimeout(() => this.hideAllCards(), 500)
+        console.log('errou');
+        this.currentPlay.splice(0,2)
+        }
+      }
+        
+
+       }
+   }
+ 
+ 
+  setEventListeners() {
+    this.canvas.addEventListener('click', (event) => {
+      const rect = this.canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      this.handleClickEvent(x, y);
+    });
+  }
+  hideAllCards() {
+    this.selectedCards.forEach((card) => {
+      card.reveled = false;
+    });
+    this.refresh();
   }
   sortCards(limit = 5) {
     let cards = [];
     while (cards.length < limit) {
       const random = Math.floor(Math.random() * Cards.length);
-      if (!cards.includes(random)) {
-        cards.push(random);
+      if (cards.findIndex((card) => card.name === Cards[random].name) === -1) {
+        const card = Object.assign({}, Cards[random]);
+        card.reveled = true;
+        cards.push(card);
       }
     }
-    cards = shuffleArray(cards.concat(cards));
-    return cards;
+
+    return shuffleArray(
+      cards.concat(cards).map((card, index) => Object.assign({}, card, { id: index })),
+    );
   }
   drawBackground() {
-    const background = new Image();
-    background.src = 'unnamed.png';
-    background.onload = () => {
-      this.ctx.drawImage(background, 0, 0, 600, 600);
-    };
+    this.ctx.drawImage(backgroundElement, 0, 0, 800, 600);
+  }
+  refresh() {
+    this.cardsElement.forEach((card) => {
+      card.draw();
+    });
   }
   render() {
-   // this.drawBackground();
-    //this.drawCardsImage();
-  }
+    const totalCards = this.selectedCards.length;
+    const cardWidth = 130;
+    const cardHeight = 180;
+    const offSetPadding = 20;
 
-  drawCardsImage() {
-    const cardsImage = new Image();
-    cardsImage.src = './images/bulbasaur.png';
-    cardsImage.onload = () => {
-      this.ctx.drawImage(cardsImage,  0, 0, 90, 140);
-      
-    };
+    const startDrawingX =
+      this.canvas.offsetWidth / 2 -
+      (cardWidth * (totalCards / 2) + offSetPadding * (totalCards / 2 - 1)) / 2;
+    const startDrawingY =
+      this.canvas.offsetHeight / 2 - (cardHeight * 2 + offSetPadding) / 2;
 
-   
- 
-  }
-   /*  this.cardsImage.src = './images/bulbasaur.png';
-     this.ctx.drawImage(this.cardsImage, 0, 0, 90, 140);
-     this.ctx.drawImage(this.cardsImage, 100, 0, 90, 140);
-     this.cardsImage3.src = './images/butterfree.png';
-     this.ctx.drawImage(this.cardsImage3, 200, 0, 90, 140);
-     this.ctx.drawImage(this.cardsImage3, 300, 0, 90, 140);
-     this.cardsImage4.src = './images/caterpie.png';
-     this.ctx.drawImage(this.cardsImage4, 400, 0, 90, 140);
-     this.ctx.drawImage(this.cardsImage4, 500, 0, 90, 140);
-     this.cardsImage5.src = './images/chansey.png';
-     this.ctx.drawImage(this.cardsImage5, 0, 150, 90, 140);
-     this.ctx.drawImage(this.cardsImage5, 100, 150, 90, 140);
-     this.cardsImage6.src = './images/charizard.png';
-     this.ctx.drawImage(this.cardsImage6, 200, 150, 90, 140);
-     this.ctx.drawImage(this.cardsImage6, 300, 150, 90, 140);
-     this.cardsImage7.src = './images/charmander.png';
-     this.ctx.drawImage(this.cardsImage7, 400, 150, 90, 140);
-     this.ctx.drawImage(this.cardsImage7, 500, 150, 90, 140);
-     this.cardsImage8.src = './images/charmeleon.png';
-     this.ctx.drawImage(this.cardsImage8, 0, 300, 90, 140);
-     this.ctx.drawImage(this.cardsImage8, 100, 300, 90, 140);
-     this.cardsImage9.src = './images/clefairy.png';
-     this.ctx.drawImage(this.cardsImage9, 200, 300, 90, 140);
-     this.ctx.drawImage(this.cardsImage9, 300, 300, 90, 140);
-     this.cardsImage10.src = './images/cloyster.png';
-     this.ctx.drawImage(this.cardsImage10, 400, 300, 90, 140);
-     this.ctx.drawImage(this.cardsImage10, 500, 300, 90, 140);
-     this.cardsImage11.src = './images/cubone.png';
-     this.ctx.drawImage(this.cardsImage11, 0, 450, 90, 140);
-     this.ctx.drawImage(this.cardsImage11, 100, 450, 90, 140);
-     this.cardsImage12.src = './images/dewgong.png';
-     this.ctx.drawImage(this.cardsImage12, 200, 450, 90, 140);
-     this.ctx.drawImage(this.cardsImage12, 300, 450, 90, 140);
-    this.cardsImage2.src = './images/diglett.png';
-    this.ctx.drawImage(this.cardsImage12, 400, 450, 90, 140);
-    this.ctx.drawImage(this.cardsImage12, 500, 450, 90, 140);
-  }
- */
-  //   /* this.cardsImage.src='/images';
-  //     this.cardsImage.onload = function(){
-  //     this.ctx.drawImage(this.cardsImage,imagePos[i][0],imagePos[i][1], 90, 140);
-  //     }
-  //     let imagePos=[[0,0],[100,0],[200,0],[300,0],[400,0],[500,0],
-  //     [0,150],[100,150],[200,150],[300,150],[400,150],[500,150],
-  //     [0,300],[100,300],[200,300],[300,300],[400,300],[500,300]
-  //     [0,450],[100,450],[200,450],[300,450],[400,450],[500,450] ];
+    let nextStartPointX = startDrawingX;
+    let nextStartPointY = startDrawingY;
 
-  //     for(let i = 0 ; i<24;i++){
-  //       drawCardsImage(i)
-  //     }*/
-  // }
+    this.selectedCards.forEach((card, index) => {
+      const select = new Card(
+        this.ctx,
+        card,
+        nextStartPointX,
+        nextStartPointY,
+        cardWidth,
+        cardHeight,
+      );
+      select.draw();
+      this.cardsElement.push(select);
+
+      nextStartPointX = nextStartPointX + cardWidth + offSetPadding;
+      if (this.selectedCards.length / 2 === index + 1) {
+        nextStartPointY = nextStartPointY + cardHeight + offSetPadding;
+        nextStartPointX = startDrawingX;
+      }
+    });    
+  }
 }
+
