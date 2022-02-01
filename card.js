@@ -53,6 +53,7 @@ export default class Card {
   update(data) {
     this.data = data;
     this.draw();
+    
   }
   clicked(x, y) {
     if (

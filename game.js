@@ -11,14 +11,16 @@ export default class Game {
     this.cardsElement = [];
     this.currentPlay= [];
     this.correctPair = 0;
+    this.wrongPair = 0;
 
   }
   start() {
-    
+   
     this.selectedCards = this.sortCards();
     this.render();
     setTimeout(() => this.hideAllCards(), 1500);
     this.setEventListeners();
+    this.ScoreBoardGameControl();
   }
   handleClickEvent(x, y) {
     const card = this.cardsElement.find((card) => {
@@ -43,17 +45,30 @@ export default class Game {
        
         let firstClick =  this.currentPlay[0];
         let secondClick = this.currentPlay[1];
+         let notFound = (this.selectedCards.find( ({ reveled }) => reveled === false ))
+        if(!notFound){
+          alert('WON THE GAME')
+        }
+      
         if(firstClick.name === secondClick.name && secondClick.id !== firstClick.id){
         
           this.currentPlay.splice(0,2);
           this.correctPair++;
+        
           console.log(this.correctPair);
-          console.log('acertou');
+          //console.log(this.selectedCards);
          }
+         
          else {
           setTimeout(() => this.hideAllCards(), 500)
-        console.log('errou');
+        
         this.currentPlay.splice(0,2)
+        this.wrongPair++;
+        if(this.wrongPair >= 6){
+          alert('Game Over');
+        }
+        console.log(this.wrongPair);
+        console.log('errou');
         }
       }
         
@@ -76,7 +91,7 @@ export default class Game {
     });
     this.refresh();
   }
-  sortCards(limit = 5) {
+  sortCards(limit = 10) {
     let cards = [];
     while (cards.length < limit) {
       const random = Math.floor(Math.random() * Cards.length);
@@ -101,9 +116,9 @@ export default class Game {
   }
   render() {
     const totalCards = this.selectedCards.length;
-    const cardWidth = 130;
+    const cardWidth = 90;
     const cardHeight = 180;
-    const offSetPadding = 20;
+    const offSetPadding = 10;
 
     const startDrawingX =
       this.canvas.offsetWidth / 2 -
@@ -133,5 +148,13 @@ export default class Game {
       }
     });    
   }
+  ScoreBoardGameControl (){
+    let attempts = this.wrongPair;
+    let score = Math.floor(this.frames);
+      this.ctx.font = '32px serif';
+      this.ctx.fillStyle = 'white';
+      this.ctx.fillText(`Maximum Atempts : 6 - Your Attempts: ${attempts}`, 20, 0);
+    }
+ 
 }
 
