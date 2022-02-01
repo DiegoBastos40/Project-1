@@ -1,61 +1,106 @@
 import Cards from './cards.js';
+import Card from './card.js';
 import { shuffleArray } from './helpers.js';
-
-const backgroundElement = new Image();
-backgroundElement.src = './unnamed.png';
 
 export default class Game {
   constructor() {
     this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
-    this.selectedCards = [];
     this.points = 0;
+    this.selectedCards = [];
+    this.cardsElement = [];
   }
   start() {
     this.selectedCards = this.sortCards();
     this.render();
+    setTimeout(() => this.hideAllCards(), 1500);
+    this.setEventListeners();
+  }
+  handleClickEvent(x, y) {
+    const card = this.cardsElement.find((card) => {
+      return card.clicked(x, y);
+    });
+    if (card) {
+      card.data.reveled = true;
+      card.update(card.data);
+    }
+
+    /* 
+      -> se não estiver nenhuma carta guardada, quer dizer que foi o primeiro click
+        -> guarda a carta clicada
+      -> se já existir uma carta guardada, quer dizer que é o segundo click
+       -> comparar as duas
+        -> se forem iguais, remover as cartas e dar pontuação
+      -> se forem diferentes, esconder as cartas de novo
+
+      -> só permitir o click quando o jogo tiver pronto para jogar;
+    */
+  }
+  setEventListeners() {
+    this.canvas.addEventListener('click', (event) => {
+      const rect = this.canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      this.handleClickEvent(x, y);
+    });
+  }
+  hideAllCards() {
+    this.selectedCards.forEach((card) => {
+      card.reveled = false;
+    });
+    this.refresh();
   }
   sortCards(limit = 5) {
     let cards = [];
     while (cards.length < limit) {
       const random = Math.floor(Math.random() * Cards.length);
-      if (!cards.includes(Cards[random])) {
+      if (cards.findIndex((card) => card.name === Cards[random].name) === -1) {
         const card = Object.assign({}, Cards[random]);
         card.reveled = true;
         cards.push(card);
       }
     }
-    cards = shuffleArray(cards.concat(cards));
-    return cards;
+
+    return shuffleArray(
+      cards
+        .concat(cards)
+        .map((card, index) => Object.assign({}, card, { id: index })),
+    );
   }
   drawBackground() {
     this.ctx.drawImage(backgroundElement, 0, 0, 800, 600);
   }
-  drawCards() {
-    const totalCards = this.selectedCards.length; // Total de cartas que vamos mostrar
-    const cardWidth = 100; // Valor do tamanhoX das cartas
-    const cardHeight = 130; // Valor do tamanhoY das cartas
-    const offSetPadding = 30; // Valor do padding das cartas
+  refresh() {
+    this.cardsElement.forEach((card) => {
+      card.draw();
+    });
+  }
+  render() {
+    const totalCards = this.selectedCards.length;
+    const cardWidth = 130;
+    const cardHeight = 180;
+    const offSetPadding = 20;
 
     const startDrawingX =
       this.canvas.offsetWidth / 2 -
       (cardWidth * (totalCards / 2) + offSetPadding * (totalCards / 2 - 1)) / 2;
     const startDrawingY =
       this.canvas.offsetHeight / 2 - (cardHeight * 2 + offSetPadding) / 2;
-    console.log(startDrawingX, startDrawingY);
 
-    console.log(startDrawingX, startDrawingY);
-
-    this.ctx.fillStyle = '#FF0000';
     let nextStartPointX = startDrawingX;
     let nextStartPointY = startDrawingY;
+
     this.selectedCards.forEach((card, index) => {
-      this.ctx.fillRect(
+      const c = new Card(
+        this.ctx,
+        card,
         nextStartPointX,
         nextStartPointY,
         cardWidth,
         cardHeight,
       );
+      c.draw();
+      this.cardsElement.push(c);
 
       nextStartPointX = nextStartPointX + cardWidth + offSetPadding;
       if (this.selectedCards.length / 2 === index + 1) {
@@ -63,61 +108,6 @@ export default class Game {
         nextStartPointX = startDrawingX;
       }
     });
+    console.log(this.cardsElement);
   }
-  render() {
-    this.drawBackground();
-    this.drawCards();
-  }
-
-  // drawCardsImage() {
-  //   this.cardsImage.src = './images/bulbasaur.png';
-  //   this.ctx.drawImage(this.cardsImage, 0, 0, 90, 140);
-  //   this.ctx.drawImage(this.cardsImage, 100, 0, 90, 140);
-  //   this.cardsImage3.src = './images/butterfree.png';
-  //   this.ctx.drawImage(this.cardsImage3, 200, 0, 90, 140);
-  //   this.ctx.drawImage(this.cardsImage3, 300, 0, 90, 140);
-  //   this.cardsImage4.src = './images/caterpie.png';
-  //   this.ctx.drawImage(this.cardsImage4, 400, 0, 90, 140);
-  //   this.ctx.drawImage(this.cardsImage4, 500, 0, 90, 140);
-  //   this.cardsImage5.src = './images/chansey.png';
-  //   this.ctx.drawImage(this.cardsImage5, 0, 150, 90, 140);
-  //   this.ctx.drawImage(this.cardsImage5, 100, 150, 90, 140);
-  //   this.cardsImage6.src = './images/charizard.png';
-  //   this.ctx.drawImage(this.cardsImage6, 200, 150, 90, 140);
-  //   this.ctx.drawImage(this.cardsImage6, 300, 150, 90, 140);
-  //   this.cardsImage7.src = './images/charmander.png';
-  //   this.ctx.drawImage(this.cardsImage7, 400, 150, 90, 140);
-  //   this.ctx.drawImage(this.cardsImage7, 500, 150, 90, 140);
-  //   this.cardsImage8.src = './images/charmeleon.png';
-  //   this.ctx.drawImage(this.cardsImage8, 0, 300, 90, 140);
-  //   this.ctx.drawImage(this.cardsImage8, 100, 300, 90, 140);
-  //   this.cardsImage9.src = './images/clefairy.png';
-  //   this.ctx.drawImage(this.cardsImage9, 200, 300, 90, 140);
-  //   this.ctx.drawImage(this.cardsImage9, 300, 300, 90, 140);
-  //   this.cardsImage10.src = './images/cloyster.png';
-  //   this.ctx.drawImage(this.cardsImage10, 400, 300, 90, 140);
-  //   this.ctx.drawImage(this.cardsImage10, 500, 300, 90, 140);
-  //   this.cardsImage11.src = './images/cubone.png';
-  //   this.ctx.drawImage(this.cardsImage11, 0, 450, 90, 140);
-  //   this.ctx.drawImage(this.cardsImage11, 100, 450, 90, 140);
-  //   this.cardsImage12.src = './images/dewgong.png';
-  //   this.ctx.drawImage(this.cardsImage12, 200, 450, 90, 140);
-  //   this.ctx.drawImage(this.cardsImage12, 300, 450, 90, 140);
-  //   this.cardsImage2.src = './images/diglett.png';
-  //   this.ctx.drawImage(this.cardsImage2, 400, 450, 90, 140);
-  //   this.ctx.drawImage(this.cardsImage2, 500, 450, 90, 140);
-
-  //   /* this.cardsImage.src='/images';
-  //     this.cardsImage.onload = function(){
-  //     this.ctx.drawImage(this.cardsImage,imagePos[i][0],imagePos[i][1], 90, 140);
-  //     }
-  //     let imagePos=[[0,0],[100,0],[200,0],[300,0],[400,0],[500,0],
-  //     [0,150],[100,150],[200,150],[300,150],[400,150],[500,150],
-  //     [0,300],[100,300],[200,300],[300,300],[400,300],[500,300]
-  //     [0,450],[100,450],[200,450],[300,450],[400,450],[500,450] ];
-
-  //     for(let i = 0 ; i<24;i++){
-  //       drawCardsImage(i)
-  //     }*/
-  // }
 }
