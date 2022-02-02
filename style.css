@@ -8,13 +8,11 @@ body .intro {
   background-image: url("/docs/assets/images/pokemon-unite-pokemon-hd-wallpaper-1920x1080-uhdpaper.com-830.1_a.jpg");
   background-size: cover;
   width: 100%;
-  height: 645px;
+  height: 730px;
   margin: 0;
   padding: 0;
 }
-#canvas {
-   background-image: url(/docs/assets/images/11.jpg); 
-}
+
 #score {
   float: right;
   color: black;
@@ -55,21 +53,22 @@ body .intro {
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
+ 
   margin-right: auto;
   margin-left: auto;
   background: linear-gradient(red, yellow); /* Standard syntax */
   
 }
 
-.intro {
-  display: flex;
-  justify-content: center;
+ .intro {
+  display: flex ;
+  align-content: flex-start;
+  /* justify-content: center; */
   flex-direction: column;
-  height: 400px;
+  height: 600px;
   text-align: center;
-  margin-top: 60px;
-}
+  margin-top: 400px;
+} 
 .intro p {
   width: 40%;
   color: rgba(12, 7, 8, 0.9);
@@ -83,12 +82,12 @@ h1 {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  text-align: center;
+  text-align:center ;
   align-items: center;
   font-size: 56px;
   font-family: "Pokemon Solid";
   color: #067768;
-  letter-spacing: 16px;
+  letter-spacing: 14px;
 }
 #game-board {
   float: left;
@@ -97,6 +96,7 @@ h1 {
 }
 
 button {
+  margin-top: 10px;
   background-color: #067768;
   border: 1px solid #9c531f;
   padding: 15px 25px;
@@ -108,18 +108,5 @@ button {
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #0c3832;
-  width: 250px;
-}
-.accessible-game {
-  width: 250px;
-  padding: 15px 25px;
-  font-size: 24px;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  color: #fff;
-  background-color: #067768;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #0c3832;
+  width: 150px;
 }

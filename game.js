@@ -3,7 +3,7 @@ import Card from './card.js';
 import { shuffleArray } from './helpers.js';
 
 export default class Game {
-  constructor() {
+  constructor(numberOfCards) {
     this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
     this.points = 0;
@@ -14,22 +14,24 @@ export default class Game {
     this.wrongPair = 0;
     this.attempts = document.getElementById('attempt');
     this.over = document.getElementById('game-over');
-    this.intervalID = null;
+     this.intervalID = ''; 
+    this.numberOfCards = numberOfCards;
+  
  
 
   }
   start() {
    
-    this.selectedCards = this.sortCards();
+    this.selectedCards = this.sortCards(this.numberOfCards);
     this.render();
-    setTimeout(() => this.hideAllCards(), 3000);
+    setTimeout(() => this.hideAllCards(), 2000);
     this.setEventListeners();
-   
+    
   }
-  stop() {
+   stop() {
     clearInterval(this.intervalId);
   }
-
+ 
   
      handleClickEvent(x, y) {
       
@@ -59,6 +61,10 @@ export default class Game {
         if(!notFound){
           alert('WON THE GAME');
         
+         
+         
+
+        
           }
    if(firstClick.name === secondClick.name && secondClick.id !== firstClick.id){
         
@@ -78,11 +84,9 @@ export default class Game {
         this.attempts.innerHTML = (6-this.wrongPair);
         if(this.wrongPair >= 6){
           alert('Game Over');
-          
+                    
           document.getElementById('canvas').remove(); 
-                 
-         
-         
+          
         }
         console.log(this.wrongPair);
         console.log('errou');
@@ -138,9 +142,10 @@ export default class Game {
   }
   render() {
     const totalCards = this.selectedCards.length;
-    const cardWidth = 110;
-    const cardHeight = 180;
-    const offSetPadding = 10;
+    
+   let cardWidth = 110;
+   let cardHeight = 180; 
+  let offSetPadding = 8;
 
     const startDrawingX =
       this.canvas.offsetWidth / 2 -
