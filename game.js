@@ -16,6 +16,12 @@ export default class Game {
     this.over = document.getElementById('game-over');
      this.intervalID = ''; 
     this.numberOfCards = numberOfCards;
+    this.sound1 = new Audio;
+    this.sound1.src = '/Audio/Breaking Through the Trap.mp3'
+    this.sound2 = new Audio;
+this.sound2.src = '/Audio/PokÃ©mon X and Y - Title Theme.mp3'
+    this.sound3 = new Audio;
+    this.sound3.src = '/Audio/PokÃ©mon Pinball OST - Game Over.mp3'
   
  
 
@@ -26,7 +32,9 @@ export default class Game {
     this.render();
     setTimeout(() => this.hideAllCards(), 2000);
     this.setEventListeners();
-    
+    this.sound1.play();
+    this.sound1.loop = true;
+   
   }
    stop() {
     clearInterval(this.intervalId);
@@ -60,6 +68,12 @@ export default class Game {
          let notFound = (this.selectedCards.find( ({ reveled }) => reveled === false ))
         if(!notFound){
           alert('WON THE GAME');
+          this.sound1.pause();
+          this.sound2.play();
+          this.sound2.loop = true;
+        
+        
+          
         
          
          
@@ -84,6 +98,13 @@ export default class Game {
         this.attempts.innerHTML = (6-this.wrongPair);
         if(this.wrongPair >= 6){
           alert('Game Over');
+          this.sound1.pause();
+          this.sound3.play();
+          this.sound3.loop = true;
+          
+
+
+
                     
           document.getElementById('canvas').remove(); 
           
