@@ -1,5 +1,5 @@
  const cardBackground = new Image();
-cardBackground.src = '/unnamed22.jpg';
+cardBackground.src = '/docs/assets/images/unnamed22.jpg';
 
 export default class Card {
   constructor(
@@ -53,6 +53,7 @@ export default class Card {
   update(data) {
     this.data = data;
     this.draw();
+
     
   }
   clicked(x, y) {

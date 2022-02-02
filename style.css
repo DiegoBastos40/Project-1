@@ -1,68 +1,104 @@
-#game-board{
-   display: none;
+#game-board {
+  display: none;
 }
-@import url('http://fonts.cdnfonts.com/css/pok');
-@import url('http://fonts.cdnfonts.com/css/the-jack-marron');
-
+@import url("http://fonts.cdnfonts.com/css/pok");
+@import url("http://fonts.cdnfonts.com/css/the-jack-marron");
 
 body .intro {
-    background-image: url('/images/pokemon-unite-pokemon-hd-wallpaper-1920x1080-uhdpaper.com-830.1_a.jpg');
-    background-size: cover;
-    width:100%;
-    height:645px;
-    margin: 0;
-    padding: 0;
+  background-image: url("/docs/assets/images/pokemon-unite-pokemon-hd-wallpaper-1920x1080-uhdpaper.com-830.1_a.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 645px;
+  margin: 0;
+  padding: 0;
 }
 #canvas {
-    background-image: url(/11.jpg);
-  //  background-repeat: no-repeat;
-   // background-size: cover;
+   background-image: url(/docs/assets/images/11.jpg); 
+}
+#score {
+  float: right;
+  color: black;
+  margin-left: 10px;
+  background: linear-gradient(red, yellow);
+  border: 1px solid yellow;
+  padding: 15px 25px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px rgba(255, 255, 0, 0.466);
+  width: 150px;
+  display: none;
+}
+#game-over{
+    font-size: 240px;
+    display: none;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 400px;
+    background: linear-gradient(red, yellow);
+    border: 1px solid yellow;
+    padding: 15px 25px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px rgba(255, 255, 0, 0.466);
+    width: 350px;
     
 }
-.intro{
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  background: linear-gradient(red, yellow); /* Standard syntax */
+  
+}
 
-    display: flex;
-	justify-content: center;
-	flex-direction: column;
-	height: 400px;
-    text-align: center;
-    margin-top: 60px;
-    
+.intro {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 400px;
+  text-align: center;
+  margin-top: 60px;
 }
 .intro p {
-    width: 40%;
-    color: rgba(12, 7, 8, 0.9);
-   margin-left: auto;
-   margin-right: auto;
-   font-size: 25px;
-   font-family: 'THE JACK MARRON', sans-serif;
+  width: 40%;
+  color: rgba(12, 7, 8, 0.9);
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 25px;
+  font-family: "THE JACK MARRON", sans-serif;
 }
 
-h1{
-    
-    display: flex;
-	justify-content: center;
-	flex-direction: column;
-	 text-align: center;
-     align-items: center;
-    font-size: 56px;
-    font-family: 'Pokemon Solid';
-    color: #067768;
-    letter-spacing: 16px;
-   
-    
-   
+h1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  font-size: 56px;
+  font-family: "Pokemon Solid";
+  color: #067768;
+  letter-spacing: 16px;
 }
 #game-board {
-    float: left;
-    padding: 0px ;
-    margin: 0px;
+  float: left;
+  padding: 0px;
+  margin: 0px;
 }
 
-button{
-    
+button {
   background-color: #067768;
-  border: 1px solid #9C531F;
+  border: 1px solid #9c531f;
   padding: 15px 25px;
   font-size: 24px;
   text-align: center;
@@ -82,9 +118,8 @@ button{
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: #067768;;
+  background-color: #067768;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #0c3832;
-
 }

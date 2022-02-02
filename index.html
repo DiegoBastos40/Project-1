@@ -17,9 +17,10 @@
                 <h1>PICKATRUE</h1>
                 <div id="button-space" >
                     <button id="start-button">StartGame</button>
-                    <p>The main objective is to find the other pair of pokemon, in the shortest time possible.Each
-                        wrong attempt,
-                        your score decreases and with each second that passes too,so ... PICK A TRUE!!
+                    <p>
+                        Welcome to PickaTrue, in this game you need to hit all the pairs, without any errors. 
+                        if you miss the pair, the cards turn over again and you will need to remember where they were again. 
+                        So, test your memory and...... PICK A TRUE !!!
                     </p>
                     <button id="accessible-game">Acessible Game</button>
                     
@@ -35,13 +36,11 @@
         <div id="game-board">
             <canvas id="canvas" width="800" height="600"></canvas>
         </div>
-        <div id="score"></div>
-        <div id="game"></div>
+        <div id="score">Maximum Attempts: <span id='attempt'>6</span></div>
+        <div id="game-over">GAME OVER !!!! TRY AGAIN</div>
 
     </div>
-    <!-- <script type="text/javascript" src="./memory.js"></script> -->
-    <!-- <script type="text/javascript" src="./cards.js"></script> -->
-    <!-- <script type="text/javascript" src="./game.js"></script> -->
+   
     <script type="module" src="./index.js" ></script>
 </body>
 <p></p>

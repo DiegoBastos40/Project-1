@@ -12,17 +12,27 @@ export default class Game {
     this.currentPlay= [];
     this.correctPair = 0;
     this.wrongPair = 0;
+    this.attempts = document.getElementById('attempt');
+    this.over = document.getElementById('game-over');
+    this.intervalID = null;
+ 
 
   }
   start() {
    
     this.selectedCards = this.sortCards();
     this.render();
-    setTimeout(() => this.hideAllCards(), 1500);
+    setTimeout(() => this.hideAllCards(), 3000);
     this.setEventListeners();
-    this.ScoreBoardGameControl();
+   
   }
-  handleClickEvent(x, y) {
+  stop() {
+    clearInterval(this.intervalId);
+  }
+
+  
+     handleClickEvent(x, y) {
+      
     const card = this.cardsElement.find((card) => {
     return card.clicked(x, y);
     });
@@ -47,13 +57,14 @@ export default class Game {
         let secondClick = this.currentPlay[1];
          let notFound = (this.selectedCards.find( ({ reveled }) => reveled === false ))
         if(!notFound){
-          alert('WON THE GAME')
-        }
-      
-        if(firstClick.name === secondClick.name && secondClick.id !== firstClick.id){
+          alert('WON THE GAME');
+        
+          }
+   if(firstClick.name === secondClick.name && secondClick.id !== firstClick.id){
         
           this.currentPlay.splice(0,2);
           this.correctPair++;
+         
         
           console.log(this.correctPair);
           //console.log(this.selectedCards);
@@ -64,8 +75,12 @@ export default class Game {
         
         this.currentPlay.splice(0,2)
         this.wrongPair++;
+        this.attempts.innerHTML = (6-this.wrongPair);
         if(this.wrongPair >= 6){
           alert('Game Over');
+          
+          document.getElementById('canvas').remove(); 
+                 
          
          
         }
@@ -76,6 +91,7 @@ export default class Game {
         
 
        }
+       
    }
  
  
@@ -93,7 +109,8 @@ export default class Game {
     });
     this.refresh();
   }
-  sortCards(limit = 8) {
+  
+  sortCards(limit = 5) {
     let cards = [];
     while (cards.length < limit) {
       const random = Math.floor(Math.random() * Cards.length);
@@ -111,6 +128,9 @@ export default class Game {
   drawBackground() {
     this.ctx.drawImage(backgroundElement, 0, 0, 800, 600);
   }
+  stop() {
+    clearInterval(this.intervalId);
+  }
   refresh() {
     this.cardsElement.forEach((card) => {
       card.draw();
@@ -118,7 +138,7 @@ export default class Game {
   }
   render() {
     const totalCards = this.selectedCards.length;
-    const cardWidth = 90;
+    const cardWidth = 110;
     const cardHeight = 180;
     const offSetPadding = 10;
 
@@ -150,13 +170,6 @@ export default class Game {
       }
     });    
   }
-  ScoreBoardGameControl (){
-    let attempts = this.wrongPair;
-    let score = Math.floor(this.frames);
-      this.ctx.font = '32px serif';
-      this.ctx.fillStyle = 'white';
-      this.ctx.fillText(`Maximum Atempts : 6 - Your Attempts: ${attempts}`, 20, 0);
-    }
  
+  
 }
-
