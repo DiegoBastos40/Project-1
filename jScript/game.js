@@ -17,11 +17,11 @@ export default class Game {
      this.intervalID = ''; 
     this.numberOfCards = numberOfCards;
     this.sound1 = new Audio;
-    this.sound1.src = './docs/assets/Audio/Breaking Through the Trap.mp3'
+    this.sound1.src = '/docs/assets/Audio/Breaking Through the Trap.mp3'
     this.sound2 = new Audio;
-    this.sound2.src = './docs/assets/Audio/PokÃ©mon X and Y - Title Theme.mp3'
+    this.sound2.src = '/docs/assets/Audio/PokÃ©mon X and Y - Title Theme.mp3'
     this.sound3 = new Audio;
-    this.sound3.src = './docs/assets/Audio/PokÃ©mon Pinball OST - Game Over.mp3'
+    this.sound3.src = '/docs/assets/Audio/PokÃ©mon Pinball OST - Game Over.mp3'
   
  
 
