@@ -72,14 +72,12 @@ export default class Game {
           this.sound1.pause();
           this.sound2.play();
           this.sound2.loop = true;
-          document.getElementById('canvas').remove();
-          document.getElementById('destination-over').style.display = 'block';
-          
-          
-
+          document.getElementById('canvas').remove(); 
         
-          
-         document.getElementById('destination-over').style.backgroundImage = `url(${card.data.img})`
+          document.getElementById('destination-over').style.display = 'block';
+          document.getElementById('h1win').style.display = 'block';
+
+          document.getElementById('destination-over').style.backgroundImage = `url(${card.data.img})`
           
        
           
