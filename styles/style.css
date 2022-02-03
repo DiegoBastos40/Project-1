@@ -109,3 +109,21 @@ button {
   box-shadow: 0 9px #0c3832;
   width: 150px;
 }
+#destination-over{
+  width: 200px;
+  height:200px;
+  margin-top: 400px;
+  background-image: url('/docs/assets/rattata.png');
+  background-size: cover;
+  display: none;
+}
+ #destination-over > h1{
+  text-align: center;
+  display: block ;
+ text-align: center;
+ position: absolute;
+ top: 100px;
+right: 50px;
+ 
+
+} 

@@ -68,25 +68,30 @@ export default class Game {
          let notFound = (this.selectedCards.find( ({ reveled }) => reveled === false ))
         if(!notFound){
           alert('WON THE GAME');
+          
           this.sound1.pause();
           this.sound2.play();
           this.sound2.loop = true;
-        
-        
+          document.getElementById('canvas').remove();
+          document.getElementById('destination-over').style.display = 'block';
           
-        
-         
-         
+          
 
         
+          
+         document.getElementById('destination-over').style.backgroundImage = `url(${card.data.img})`
+          
+       
+          
+         
+          
+         
           }
    if(firstClick.name === secondClick.name && secondClick.id !== firstClick.id){
         
           this.currentPlay.splice(0,2);
           this.correctPair++;
-         
-        
-          console.log(this.correctPair);
+         console.log(this.correctPair);
           //console.log(this.selectedCards);
          }
          
@@ -98,15 +103,17 @@ export default class Game {
         this.attempts.innerHTML = (6-this.wrongPair);
         if(this.wrongPair >= 6){
           alert('Game Over');
+          console.log(card.data.img);
           this.sound1.pause();
           this.sound3.play();
           this.sound3.loop = true;
+          document.getElementById('canvas').remove(); 
           
 
 
 
                     
-          document.getElementById('canvas').remove(); 
+          
           
         }
         console.log(this.wrongPair);
