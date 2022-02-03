@@ -6,8 +6,6 @@ export default class Game {
   constructor(numberOfCards) {
     this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
-    this.canvas.width = window.innerWidth;
-    this.canvas.heigth = window.innerHeight;
     this.points = 0;
     this.selectedCards = [];
     this.cardsElement = [];
