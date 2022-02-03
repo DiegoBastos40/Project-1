@@ -6,6 +6,8 @@ export default class Game {
   constructor(numberOfCards) {
     this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
+    this.canvas.width = window.innerWidth;
+    this.canvas.heigth = window.innerHeight;
     this.points = 0;
     this.selectedCards = [];
     this.cardsElement = [];
@@ -22,10 +24,7 @@ export default class Game {
     this.sound2.src = './docs/assets/Audio/PokÃ©mon X and Y - Title Theme.mp3'
     this.sound3 = new Audio;
     this.sound3.src = './docs/assets/Audio/PokÃ©mon Pinball OST - Game Over.mp3'
-  
- 
-
-  }
+ }
   start() {
    
     this.selectedCards = this.sortCards(this.numberOfCards);
@@ -36,10 +35,6 @@ export default class Game {
     this.sound1.loop = true;
    
   }
-   stop() {
-    clearInterval(this.intervalId);
-  }
- 
   
      handleClickEvent(x, y) {
       
@@ -76,15 +71,9 @@ export default class Game {
         
           document.getElementById('destination-over').style.display = 'block';
           document.getElementById('h1win').style.display = 'block';
-
           document.getElementById('destination-over').style.backgroundImage = `url(${card.data.img})`
           
-       
-          
-         
-          
-         
-          }
+        }
    if(firstClick.name === secondClick.name && secondClick.id !== firstClick.id){
         
           this.currentPlay.splice(0,2);
@@ -171,7 +160,7 @@ export default class Game {
     
    let cardWidth = 110;
    let cardHeight = 180; 
-  let offSetPadding = 8;
+   let offSetPadding = 8;
 
     const startDrawingX =
       this.canvas.offsetWidth / 2 -
@@ -202,5 +191,4 @@ export default class Game {
     });    
   }
  
-  
 }

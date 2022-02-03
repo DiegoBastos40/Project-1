@@ -9,14 +9,13 @@ export default class Card {
     yPoint = 0,
     width = 100,
     height = 130,
-  ) {
+) {
     this.context = context;
     this.data = data;
     this.xPoint = xPoint;
     this.yPoint = yPoint;
     this.width = width;
     this.height = height;
-    
   }
 
   draw() {
@@ -53,9 +52,7 @@ export default class Card {
   update(data) {
     this.data = data;
     this.draw();
-
-    
-  }
+}
   clicked(x, y) {
     if (
       x > this.xPoint &&

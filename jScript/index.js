@@ -8,8 +8,7 @@ import Game from './game.js';
     container.style.display = 'none';
     showCanvas.style.display = 'block';
     showScore.style.display = 'block';
-    
-    startGame1();
+     startGame1();
   });
   document.getElementById('level1').addEventListener('click', () => {
     let container = document.querySelector('.hide-html');
@@ -18,9 +17,7 @@ import Game from './game.js';
     container.style.display = 'none';
     showCanvas.style.display = 'block';
     showScore.style.display = 'block';
-   
-    
-    startGame2();
+     startGame2();
   });
   document.getElementById('level2').addEventListener('click', () => {
     let container = document.querySelector('.hide-html');
@@ -29,8 +26,6 @@ import Game from './game.js';
     container.style.display = 'none';
     showCanvas.style.display = 'block';
     showScore.style.display = 'block';
-   
-    
     startGame3();
   });
   

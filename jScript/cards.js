@@ -152,34 +152,4 @@
     { name:'zubat-f' , img:'./docs/assets/zubat-f.png'},
   ];  
 
- /*  const cards = [
-    { name: 'bulbasur', img: './docs/assets/bulbasaur.png' },
-    { name: 'butterfree', img: './docs/assets/butterfree.png' },
-    { name: 'caterpie', img: './docs/assets/caterpie.png' },
-    { name: 'chansey', img: './docs/assets/chansey.png' },
-    { name: 'charizard', img: './docs/assets/charizard.png' },
-    { name: 'charmander', img: './docs/assets/charmander.png' },
-    { name: 'charmeleon', img: './docs/assets/charmeleon.png' },
-    { name: 'clefairy', img: './docs/assets/clefairy.png' },
-    { name: 'cloyster', img: './docs/assets/cloyster.png' },
-    { name: 'cubone', img: './docs/assets/cubone.png' },
-    { name: 'dewgong', img: './docs/assets/dewgong.png' },
-    { name: 'diglett', img: './docs/assets/diglett.png' },
-    { name: 'bulbasur', img: './docs/assets/bulbasaur.png' },
-    { name: 'butterfree', img: './docs/assets/butterfree.png' },
-    { name: 'caterpie', img: './docs/assets/caterpie.png' },
-    { name: 'chansey', img: './docs/assets/chansey.png' },
-    { name: 'charizard', img: './docs/assets/charizard.png' },
-    { name: 'charmander', img: './docs/assets/charmander.png' },
-    { name: 'charmeleon', img: './docs/assets/charmeleon.png' },
-    { name: 'clefairy', img: './docs/assets/clefairy.png' },
-    { name: 'cloyster', img: './docs/assets/cloyster.png' },
-    { name: 'cubone', img: './docs/assets/cubone.png' },
-    { name: 'dewgong', img: './docs/assets/dewgong.png' },
-    { name: 'diglett', img: './docs/assets/diglett.png' },
-  ];
-
-  cards.forEach((card)=>{
-    console.log(Math.floor(Math.random(card.img)));
-
-  }); */
+ 
