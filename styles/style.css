@@ -18,6 +18,14 @@ body .intro {
     height: 100%;
    
   }
+  .intro p {
+    width: 90%;
+
+  }
+  h1{
+    font-size: 36px;
+    letter-spacing: 10px;
+  }
 } 
 #score {
   float: right;
