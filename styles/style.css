@@ -26,8 +26,8 @@ body .intro {
     font-size: 36px;
     letter-spacing: 10px;
   }
-  #level2{
-display : none;
+  button > #level2{
+     display : none;
   }
 } 
 #score {
