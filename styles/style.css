@@ -13,21 +13,17 @@ body .intro {
 }
  @media (max-width : 480px) {
   body .intro {
-    
     width: 100%;
     height: 100%;
-   
-  }
+   }
   .intro p {
     width: 90%;
-
-  }
+}
   h1{
     font-size: 20px;
-   
-  }
-  #level2 {
-     display : none;
+   }
+  #level2{
+     display: none;
   }
 } 
 
