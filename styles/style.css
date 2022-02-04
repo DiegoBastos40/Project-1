@@ -22,7 +22,7 @@ body .intro {
   h1{
     font-size: 20px;
    }
-  #level2{
+  button > #level2{
      display: none;
   }
 } 

@@ -27,7 +27,7 @@ export default class Game {
    
     this.selectedCards = this.sortCards(this.numberOfCards);
     this.render();
-    setTimeout(() => this.hideAllCards(), 2000);
+    setTimeout(() => this.hideAllCards(), 3000);
     this.setEventListeners();
     this.sound1.play();
     this.sound1.loop = true;
