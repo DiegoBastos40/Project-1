@@ -26,12 +26,12 @@ body .intro {
     font-size: 20px;
    
   }
-  button > #level2{
+  #level2{
      display : none;
   }
 } 
 @media (max-width : 600px){
-  button > #level2{
+   #level2{
     display : none;
  }
 }
