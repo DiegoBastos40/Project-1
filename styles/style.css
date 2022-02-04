@@ -13,20 +13,21 @@ body .intro {
 }
  @media (max-width : 480px) {
   body .intro {
+    
     width: 100%;
     height: 100%;
-   }
+   
+  }
   .intro p {
     width: 90%;
-}
-  h1{
-    font-size: 20px;
-   }
-  button > #level2{
-     display: none;
-  }
-} 
 
+  }
+  h1{
+    font-size: 36px;
+    letter-spacing: 10px;
+  }
+  
+} 
 #score {
   float: right;
   color: black;
